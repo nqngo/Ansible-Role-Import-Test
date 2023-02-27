@@ -1,0 +1,7 @@
+---
+# Import role "secondary" with environment variable PATH set to virtualenv "test"
+- name: Import role secondary
+  import_role:
+    name: secondary
+  environment:
+    PATH: "{{ ansible_env.HOME }}/test/bin:{{ ansible_env.PATH }}"

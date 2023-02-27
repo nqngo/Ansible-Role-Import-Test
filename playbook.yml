@@ -1,0 +1,5 @@
+---
+# Ansible playbook that call the role main
+- hosts: all
+  roles:
+    - main

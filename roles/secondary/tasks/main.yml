@@ -1,0 +1,46 @@
+---
+# Ansible role that print the location of Python binary we are using
+- name: Print Python binary location
+  debug:
+    msg: "Python binary location: {{ ansible_python_interpreter }}"
+
+# A command that print python version and printout stdout in Ansible
+- name: Print Python version
+  command: "python --version"
+  register: python_version
+
+- name: Print Python version stdout
+  debug:
+    msg: "{{ python_version.stdout }}"
+
+# A command that print out which Python binary is used by Ansible
+- name: Print Ansible Python binary location
+  command: "which python"
+  register: ansible_python_binary
+
+- name: Print Ansible Python binary location stdout
+  debug:
+    msg: "{{ ansible_python_binary.stdout }}"
+
+# Install black package using pip
+- name: Install black
+  pip:
+    name: black
+
+# A command that called black binary and printout stdout in Ansible
+- name: Call black binary
+  command: "black --version"
+  register: black_version
+
+- name: Print black version stdout
+  debug:
+    msg: "{{ black_version.stdout }}"
+
+# A command that print out the location of black binary
+- name: Print black binary location
+  command: "which black"
+  register: black_binary
+
+- name: Print black binary location stdout
+  debug:
+    msg: "{{ black_binary.stdout }}"
